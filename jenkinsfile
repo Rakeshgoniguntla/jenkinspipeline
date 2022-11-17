@@ -1,7 +1,5 @@
 pipeline {
-agent {
-  label 'C-project'
-}
+agent any
     stages {
       stage ('BUILD') { 
         steps {
@@ -9,6 +7,7 @@ agent {
         }    
       } 
     stage ('TEST') { 
+    agent { label 'C-project' }
         steps {
          echo "This is TEST steps"
       
