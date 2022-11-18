@@ -1,37 +1,31 @@
 pipeline {
-  agent { label 'C-project'}
-    stages {
-      stage ('BUILD') {
-        steps {
-          sh '''
-            #include <stdio.h>
+	agent { label 'java1' }
+  tools{
+    maven 'local_maven'
+     }
+		satages {
+			stage ('BUILD') {
+				steps {
+					sh 'mvn clean package'
+				}		
+			
+			}
+			stage ('BUILD') {
+				steps {
+					sh 'mvn clean install'
+				}
+				post{
+					sucecess{
+						echo "Archiving the Artifacts"
+						archiveArtifacts artifacts: '**/target/*.war' 
+				}
+			stage ('Deploy to Tomcat server) {
+				steps {
+					deploy adapters: [tomcat9(credentialsId: 'tomcat', path: '', url: 'http://3.93.152.247:8080/')], contextPath: null, war: '**/*.war'
+				}
+			}
+			
+			
+		}
 
-big3()
-{
-
-  double n1, n2, n3;
-
-  printf("Enter three different numbers: ");
-  scanf("%lf %lf %lf", &n1, &n2, &n3);
-
-  // if n1 is greater than both n2 and n3, n1 is the largest
-  if (n1 >= n2 && n1 >= n3)
-    printf("%.2f is the largest number.", n1);
-
-  // if n2 is greater than both n1 and n3, n2 is the largest
-  if (n2 >= n1 && n2 >= n3)
-    printf("%.2f is the largest number.", n2);
-
-  // if n3 is greater than both n1 and n2, n3 is the largest
-  if (n3 >= n1 && n3 >= n2)
-    printf("%.2f is the largest number.", n3);
-
-  return 0;
-}
-        
-        
-        }
-        
-      }
-    }
 }
