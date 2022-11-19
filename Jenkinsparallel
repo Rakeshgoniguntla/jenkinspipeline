@@ -1,0 +1,44 @@
+pipeline {
+    agent { label 'java' } 
+      tools{
+    maven 'local_maven'
+     }
+    stages {
+        stage ('Parallel') {
+            parallel {
+        stage('clone') {
+            steps {
+              git branch: 'main', url: 'https://github.com/Rakeshgoniguntla/assignment.git'  
+            }
+        }
+                stage('clone java') {
+            steps {
+                git 'https://github.com/Rakeshgoniguntla/newjava.git'
+            }
+            
+                }
+            }
+        }
+        stage('Build') {
+            steps {
+                sh '''
+            cd /home/ubuntu/jenkins/workspace/pipelinejava/
+            make
+            rm -rf *.o
+            mkdir copy
+            mv /home/ubuntu/jenkins/workspace/pipelinejava/ABC.exe /home/ubuntu/jenkins/workspace/pipelinejava/copy
+            mv /home/ubuntu/jenkins/workspace/pipelinejava/*.c makefile /home/ubuntu/jenkins/workspace/pipelinejava/copy
+            '''
+            }
+        }
+
+        stage('Build Java') {
+            steps {
+                sh '''
+                cd /home/ubuntu/jenkins/workspace/pipelinejava/
+                mvn clean install
+                '''
+            }
+        }
+    }
+}
