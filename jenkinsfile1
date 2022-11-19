@@ -4,9 +4,10 @@ pipeline {
     PATH = "/opt/apache-maven-3.8.6/bin/:$PATH"
     }
     stages {
-      stage ("BUILD")
+      stage ("BUILD") {
         steps {
             sh "mvn clean install"
+        }
       }
     }
  }
