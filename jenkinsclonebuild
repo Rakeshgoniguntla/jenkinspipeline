@@ -26,6 +26,12 @@ pipeline {
                 git 'https://github.com/Rakeshgoniguntla/newjava.git'
             }
         }
- 
+        stage('Build Java') {
+            steps {
+                sh '''
+                cd /home/ubuntu/jenkins/workspace/pipelinejava/
+                mvn clean install
+            }
+        }
     }
 }
