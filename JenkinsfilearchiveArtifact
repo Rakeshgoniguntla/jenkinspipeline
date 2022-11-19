@@ -33,6 +33,12 @@ pipeline {
                 mvn clean install
                 '''
             }
-        }
+             post {
+                    success {
+                            echo "Archiving the artifacts
+                            archiveArtifacts artifacts: '**/target/*.war'    
+                }     
+            }
+       }
     }
 }
