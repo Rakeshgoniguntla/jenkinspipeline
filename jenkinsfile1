@@ -1,0 +1,12 @@
+pipeline {
+  agent { label 'javahome' }
+   environment {
+    PATH = /opt/apache-maven-3.8.6/bin/:$PATH
+    }
+    stages {
+      stage ("BUILD")
+        steps {
+            sh "mvn clean install"
+      }
+    }
+ }
