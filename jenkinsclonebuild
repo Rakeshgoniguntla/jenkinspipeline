@@ -26,7 +26,7 @@ pipeline {
         stage('Build maven') {
             steps {
                 sh '''
-                cd /home/ubuntu/jenkins/workspace/pipelinejava/
+                cd /home/ubuntu/jenkins/workspace/pipelinejava
                 mvn clean install
                 '''
             }
