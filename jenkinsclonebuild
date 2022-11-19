@@ -27,7 +27,7 @@ pipeline {
             steps {
                 sh '''
                 cd /home/ubuntu/jenkins/workspace/pipelinejava
-                mvn clean package
+                sudo mvn clean install
                 '''
             }
         }
