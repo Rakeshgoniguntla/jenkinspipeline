@@ -1,8 +1,8 @@
 pipeline {
     agent { label 'java' } 
-       environment {
-    PATH = "/opt/apache-maven-3.8.6/bin/:$PATH"
-    }
+      tools{
+    maven 'local_maven'
+     }
     stages {
         stage('clone') {
             steps {
