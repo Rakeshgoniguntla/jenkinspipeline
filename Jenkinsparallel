@@ -21,6 +21,7 @@ pipeline {
         }
         stage('Build') {
             steps {
+            catchError(buildResult: 'SUCCESS', catchInterruptions: false, message: 'This step failed', stageResult: 'FAILURE') {
                 sh '''
             cd /home/ubuntu/jenkins/workspace/pipelinejava/
             make
@@ -30,6 +31,7 @@ pipeline {
             mv /home/ubuntu/jenkins/workspace/pipelinejava/*.c makefile /home/ubuntu/jenkins/workspace/pipelinejava/copy
             '''
             }
+           }
         }
 
         stage('Build Java') {
