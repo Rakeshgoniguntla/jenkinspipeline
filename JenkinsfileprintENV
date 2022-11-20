@@ -1,5 +1,5 @@
 pipeline {
-	agent C-project
+	agent { label 'C-project' }
 		environment {
 		NAME = 'RAKESH'
 		}
