@@ -13,14 +13,14 @@ pipeline {
 					script {
 						if(params.BRANCH == 'master')
 							{
-								git branch: params.BRANCH, url: $JAVAURL
+								git branch: params.BRANCH, url: $(JAVAURL}
 								sh '''
 								cd /home/jenkins/jenkins-workspace/workspace/parameter_build
 								mvn clean install
 								'''
 							}
 							else {
-								git branch: params.BRANCH, url: $CURL
+								git branch: params.BRANCH, url: $(CURL)
 								sh '''
 								cd /home/jenkins/jenkins-workspace/workspace/parameter_build
 								make 
