@@ -15,6 +15,7 @@ pipeline {
                 steps {
                     sh '''
                     echo "This is Build step"
+		    '''
                 }
             }
         stage ('test') {
@@ -23,12 +24,14 @@ pipeline {
 					steps {
 						sh '''
 						echo "this is testing step"
+						'''
 						}
 					}
 				stage ('test-suite2') {
 					steps {
 						sh '''
 						echo "this is testing step"
+						'''
 						}
 					}
 
@@ -36,6 +39,7 @@ pipeline {
 					steps {
 						sh '''
 						echo "this is testing step"
+						'''
 						}
 					}
 				}
@@ -44,6 +48,7 @@ pipeline {
                 steps {
                     sh '''
                     echo "This is Build step"
+		    '''
                 }
             }	
 
@@ -51,11 +56,11 @@ pipeline {
                 steps {
                     sh '''
                     echo "This is Build step"
-					'''
-					}
+			'''
+			}
                 }
             }	
-		}				
+	}				
     }
         
 }
