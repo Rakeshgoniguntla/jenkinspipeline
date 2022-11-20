@@ -1,7 +1,7 @@
 pipeline {
 	agent {label 'C-project'}
 		parameters {
-			choice choices: ['main, master'], description: 'Enter the Branch ', name: 'BRANCH'		
+			choice choices: ['main', 'master'], description: 'Enter the Branch Name', name: 'BRANCH'		
 			}
 		environment {
 			JAVAURL = "https://github.com/Rakeshgoniguntla/Java-1.git"
