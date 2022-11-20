@@ -2,16 +2,16 @@ pipeline {
 	agent {label 'C-project'}
 		parameters {
 			string defaultValue: 'main', description: 'enter the Branch to build', name: 'BRANCH'
-			string defaultValue: 'https://github.com/Rakeshgoniguntla/Java-1.git', description: 'Enter the Repo URL', name: 'GITREPO'
+			string defaultValue: 'https://github.com/Rakeshgoniguntla/assignment.git', description: 'Enter the Repo URL', name: 'GITREPO'
 			}
 			
 		stages {
 			stage ('BUILD') {
 				steps {
 					sh '''
-						git '$(params.GITREPO)'
+						git branch: params.BRANCH, url: params.GITREPO
 						cd /home/jenkins/jenkins-workspace/workspace/parameter_build
-						mvn clean install
+						make
 						'''
 						}
 					}
