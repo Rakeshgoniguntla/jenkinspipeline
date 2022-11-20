@@ -1,5 +1,5 @@
 pipeline {
-	agent any
+	agent C-project
 		environment {
 		NAME = 'RAKESH'
 		}
@@ -8,12 +8,11 @@ pipeline {
 				steps {
 					sh '''
 					echo "$NAME"
-					sudo mkdir "ENVariable"
+					touch /home/jenkins/jenkins-workspace/workspace/ENVPIPE/ENVariable
 					printenv > ENVariable
 					'''
 					}
 				}
 			}
 		}
-		
 		
