@@ -9,7 +9,7 @@ pipeline {
 			stage ('BUILD') {
 				steps {
 					sh '''
-						git branch: params.BRANCH, url: params.GITREPO
+						git branch: $(params.BRANCH), url: $(params.GITREPO)
 						cd /home/jenkins/jenkins-workspace/workspace/parameter_build
 						make
 						'''
