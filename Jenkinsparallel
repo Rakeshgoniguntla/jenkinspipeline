@@ -23,12 +23,12 @@ pipeline {
             steps {
             catchError(buildResult: 'SUCCESS', catchInterruptions: false, message: 'This step failed', stageResult: 'FAILURE') {
                 sh '''
-            cd /home/ubuntu/jenkins/workspace/pipelinejava/
+            cd /home/jenkins/jenkins-workspace/workspace/parallelpipeline
             make
             rm -rf *.o
             mkdir copy
-            mv /home/ubuntu/jenkins/workspace/pipelinejava/ABC.exe /home/ubuntu/jenkins/workspace/pipelinejava/copy
-            mv /home/ubuntu/jenkins/workspace/pipelinejava/*.c makefile /home/ubuntu/jenkins/workspace/pipelinejava/copy
+            mv /home/jenkins/jenkins-workspace/workspace/parallelpipeline/ABC.exe /home/jenkins/jenkins-workspace/workspace/parallelpipeline/copy
+            mv /home/jenkins/jenkins-workspace/workspace/parallelpipeline/*.c makefile /home/jenkins/jenkins-workspace/workspace/parallelpipeline/copy
             '''
             }
            }
@@ -37,7 +37,7 @@ pipeline {
         stage('Build Java') {
             steps {
                 sh '''
-                cd /home/ubuntu/jenkins/workspace/pipelinejava/
+                cd /home/jenkins/jenkins-workspace/workspace/parallelpipeline
                 mvn clean install
                 '''
             }
