@@ -19,7 +19,7 @@ pipeline {
                 }
             }
         stage ('test') {
-			parallel {
+			matrix {
 				stage ('test-suite1') {
 					steps {
 						sh '''
