@@ -1,5 +1,5 @@
 pipeline {
-	agent {label 'C-project'}
+	agent { label 'C-project' }
 		parameters {
 			choice choices: ['main', 'master'], description: 'Enter the Branch Name', name: 'BRANCH'		
 			}
