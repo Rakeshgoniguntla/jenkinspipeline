@@ -1,5 +1,5 @@
 pipeline {
-    agent { label 'java' } 
+    agent { label 'C-project' } 
       tools{
     maven 'local_maven'
      }
