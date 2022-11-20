@@ -1,0 +1,60 @@
+pipeline {
+    agent any 
+    stages {
+        stage ('Clone') {
+            steps {
+                sh '''
+                echo "This is Clone step"
+                '''
+            }
+     
+        }
+    stage ('Build') {
+        parallel {
+            stage ('buildsourcecode') {
+                steps {
+                    sh '''
+                    echo "This is Build step"
+                }
+            }
+        stage ('test') {
+			parallel {
+				stage ('test-suite1') {
+					steps {
+						sh '''
+						echo "this is testing step"
+						}
+					}
+				stage ('test-suite2') {
+					steps {
+						sh '''
+						echo "this is testing step"
+						}
+					}
+
+				stage ('test-suite3') {
+					steps {
+						sh '''
+						echo "this is testing step"
+						}
+					}
+				}
+			}
+			stage ('Documentation') {
+                steps {
+                    sh '''
+                    echo "This is Build step"
+                }
+            }	
+
+			stage ('Static-Analysis') {
+                steps {
+                    sh '''
+                    echo "This is Build step"
+					}
+                }
+            }	
+		}				
+    }
+        
+}
