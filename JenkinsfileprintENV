@@ -8,9 +8,12 @@ pipeline {
 				steps {
 					sh '''
 					echo "$NAME"
-					printenv
+					sudo mkdir "ENVariable"
+					printenv > ENVariable
 					'''
 					}
 				}
 			}
 		}
+		
+		
