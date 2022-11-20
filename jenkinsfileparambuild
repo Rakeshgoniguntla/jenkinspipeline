@@ -1,0 +1,31 @@
+pipeline {
+	agent {label 'C-project'}
+		parameters {
+			choice choices: ['main, master'], description: 'Enter the Branch ', name: 'BRANCH'		
+			}
+		environment {
+			JAVAURL = "https://github.com/Rakeshgoniguntla/Java-1.git"
+			CURL = "https://github.com/Rakeshgoniguntla/assignment.git"
+		}
+		stages {
+			stage {'build'}
+				steps {
+					script {
+						if(params.BRANCH == 'master')
+							{
+								git branch: params.BRANCH, url: $JAVAURL
+								sh '''
+								cd /home/jenkins/jenkins-workspace/workspace/parameter_build
+								mvn clean install
+								'''
+							}
+							else {
+								git branch: params.BRANCH, url: $CURL
+								sh '''
+								cd /home/jenkins/jenkins-workspace/workspace/parameter_build
+								make 
+								'''
+								}
+							}
+						}
+					}
