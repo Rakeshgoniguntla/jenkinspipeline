@@ -1,0 +1,26 @@
+pipeline {
+        agent { label 'C-project' }
+        parameters {
+        booleanParam description: 'Should i deploy ?', name: 'DEPLOY'
+        choice choices: ['QA', 'PROD', 'TESTING'], description: 'Select the Environment to test', name: 'ENV'
+        string defaultValue: 'SOWJANYA', description: 'ENTER Name', name: 'NAME'
+        credentials credentialType: 'com.cloudbees.plugins.credentials.impl.UsernamePasswordCredentialsImpl', defaultValue: 'tomcat', description: 'Enter tomcat credentials', name: 'tomcat', required: false
+        password defaultValue: 'PASSWORD', description: 'Enter Password', name: 'Password'
+        file description: 'enter the file location', name: 'Ubuntu'
+        text description: 'Explain jenkins process', name: 'Jenkins'
+            }
+            stages {
+                stage ('BUILD') {
+                    steps {
+                        echo "${params.DEPLOY}"
+                        echo "${params.ENV}"
+                        echo "${params.NAME}"
+                        echo "${params.tomcat}"
+                        echo "${params.Password}"
+                        echo "${Ubuntu}"
+                        echo "${params.Jenkins}"
+                    }   
+                }
+                    
+                }
+            }
