@@ -6,14 +6,18 @@ pipeline {
 			}
 			
 		stages {
-			stage ('BUILD') {
+			stage ('clone') {
 				steps {
-						git branch: ${params.BRANCH}, url: ${params.gitrepo}
-						sh '''
-						cd /home/jenkins/jenkins-workspace/workspace/parameter_build/
-						make ABC.exe
-						'''
-						}
+					git branch: ${params.BRANCH}, url: ${params.gitrepo}
+					}
+				}
+			stage ('clone') {
+				steps {
+					sh '''
+					cd /home/jenkins/jenkins-workspace/workspace/parameter_build/
+					make ABC.exe
+					'''
 					}
 				}
 			}
+		}
