@@ -10,7 +10,7 @@ pipeline {
 				steps {
 					sh '''
 						git branch: ${params.BRANCH}, url: ${params.gitrepo}
-						cd /home/jenkins/jenkins-workspace/workspace/parameter_build
+						cd /home/jenkins/jenkins-workspace/workspace/parameter_build/
 						make
 						'''
 						}
