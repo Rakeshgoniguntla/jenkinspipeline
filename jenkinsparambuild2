@@ -8,7 +8,7 @@ pipeline {
 		stages {
 			stage ('clone') {
 				steps {
-					git branch: ${params.BRANCH}, url: ${params.gitrepo}
+					git branch: "${params.BRANCH}", url: "${params.gitrepo}"
 					}
 				}
 			stage ('clone') {
