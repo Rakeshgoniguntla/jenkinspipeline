@@ -11,7 +11,7 @@ pipeline {
 						git branch: ${params.BRANCH}, url: ${params.gitrepo}
 						sh '''
 						cd /home/jenkins/jenkins-workspace/workspace/parameter_build/
-						make
+						make ABC.exe
 						'''
 						}
 					}
