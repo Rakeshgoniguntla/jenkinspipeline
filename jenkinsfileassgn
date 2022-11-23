@@ -1,0 +1,37 @@
+pipeline {
+	agent any 
+		parameters {
+			 booleanParam 'stage1'
+			 string defaultValue: 'Assignment', description: 'Enter the Job Name', name: 'JOB_NAME', trim: true
+				}
+		
+
+		stages {
+			stage ('1st stage') {
+				steps {
+					echo "${params.stage1}"
+					}
+				}
+			stage ('2nd-Stage') {
+				
+				steps {
+					echo "${params.JOB_NAME}"
+					}
+				}
+			stage ('3rd-Stage') {
+				agent { label 'C-project' }
+				steps {
+					sh '''
+					df -h .
+					'''
+				}
+			}
+			stage ('4th Stage') {
+				steps {
+					sh '''
+					ps -ef 
+					'''
+					}
+				}
+			}
+		}	
