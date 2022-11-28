@@ -1,0 +1,16 @@
+pipeline {
+	agent {label 'master'}
+		stages {
+			stage ('clone private rep') {
+				steps {
+				sh '''
+				sudo cd /home/var/lib/jenkins/MKsirAssgn1
+				sudo cat private
+				}
+			
+			}
+		
+		}
+
+
+}
