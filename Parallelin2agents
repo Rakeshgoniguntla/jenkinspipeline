@@ -1,0 +1,47 @@
+pipeline {
+    agent none
+        stages {
+            stage ('master parallel') {
+                parallel {
+                    stage ('stage1') {
+                        agent { label 'master' }
+                        steps {
+                        sh '''
+                        sleep 5
+                        '''
+                        }
+                    }
+                    stage ('stage2') {
+                        agent { label 'master' }
+                        steps {
+                            sh '''
+                            sleep 5
+                            '''
+                        }
+                    
+                }
+            }
+        }
+        stage ('slave parallel') {
+                parallel {
+                    stage ('slave stage1') {
+                        agent { label 'C-project' }
+                        steps {
+                        sh '''
+                        sleep 5
+                        '''
+                        }
+                    }
+                    stage ('slave stage2') {
+                        agent { label 'C-project' }
+                        steps {
+                            sh '''
+                            sleep 5
+                            '''
+                        }
+                    
+                }
+            }
+        }
+    }
+}
