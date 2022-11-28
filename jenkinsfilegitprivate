@@ -6,6 +6,7 @@ pipeline {
 				sh '''
 				sudo cd /home/var/lib/jenkins/MKsirAssgn1
 				sudo cat private
+				'''
 				}
 			
 			}
