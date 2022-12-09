@@ -1,6 +1,6 @@
 pipeline {
     
-    agent 
+    agent {label 'C-slave'}
     
 	stages {
 		stage ('clone') {
@@ -14,10 +14,11 @@ pipeline {
 				cd /home/ubuntu/jenkins/workspace/Archive
 				make 
 				'''
+				}
 				post {
 					success {
 					
-						archiveArtifacts artifacts: '/*.exe/', followSymlinks: false
+						archiveArtifacts artifacts: '**/*.exe/', followSymlinks: false
 						}
 					}
 				
@@ -25,4 +26,3 @@ pipeline {
 			
 			}
 		}
-	}
