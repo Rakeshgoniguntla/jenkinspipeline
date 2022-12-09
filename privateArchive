@@ -1,6 +1,6 @@
 pipeline {
     
-    agent {label 'C-slave'}
+    agent { label 'C-slave' }
     
 	stages {
 		stage ('clone') {
