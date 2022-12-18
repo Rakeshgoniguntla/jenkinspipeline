@@ -6,8 +6,8 @@ pipeline {
                 echo 'Hello World'
             }
         }
-        timeout(time: 10, unit: 'SECONDS')
         stage('Example Deploy') {
+            timeout(time: 10, unit: 'SECONDS')
             when {
                 expression {env.GIT_BRANCH == 'origin/main'}
             }
