@@ -6,12 +6,16 @@ pipeline {
                 echo 'Hello World'
             }
         }
+        timeout(time: 10, unit: 'SECONDS')
         stage('Example Deploy') {
             when {
                 expression {env.GIT_BRANCH == 'origin/main'}
             }
             steps {
+                sh '''
                 echo 'Deploying'
+                sleep 15
+                '''
             }
         }
     }
