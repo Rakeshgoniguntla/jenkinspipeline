@@ -8,7 +8,7 @@ pipeline {
         }
         stage('Example Deploy') {
             when {
-                branch 'main'
+                expression {env.GIT_BRANCH == 'origin/main'}
             }
             steps {
                 echo 'Deploying'
