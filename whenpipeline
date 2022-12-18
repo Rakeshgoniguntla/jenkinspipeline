@@ -11,11 +11,12 @@ pipeline {
                 expression {env.GIT_BRANCH == 'origin/main'}
             }
             steps {
-                timeout(time: 10, unit: 'SECONDS')
+                timeout(time: 10, unit: 'SECONDS') {
                 sh '''
                 echo 'Deploying'
                 sleep 15
                 '''
+                }
             }
         }
     }
